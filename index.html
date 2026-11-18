@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="theme-color" content="#171e20" />
+    <title>URBAN EMPIRE — Make this city yours.</title>
+    <meta
+      name="description"
+      content="Explore Nova City in Urban Empire, an original open-world driving adventure. Take contracts, build your garage, and make this city yours."
+    />
+    <meta property="og:site_name" content="URBAN EMPIRE" />
+    <meta property="og:title" content="URBAN EMPIRE — Make this city yours." />
+    <meta
+      property="og:description"
+      content="The coast is calling. Explore Nova City, drive original vehicles, take on contracts, and build your empire."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/index-D4GEW_pW.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Z3oZ9V7b.css">
+  </head>
+  <body>
+    <main id="game">
+      <canvas id="world" aria-label="Nova City interactive 3D game"></canvas>
+      <div class="vignette"></div>
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Urban Empire home"
+          ><span class="brand-mark">UE<span>↗</span></span
+          ><span
+            >URBAN<br />EMPIRE<span class="edition">NOVA CITY</span></span
+          ></a
+        >
+        <nav aria-label="Game menus">
+          <button data-panel="world" class="nav-active">
+            <span class="nav-dot"></span> FREE ROAM</button
+          ><button data-panel="missions">
+            MISSIONS <span class="count">6</span></button
+          ><button data-panel="garage">GARAGE</button
+          ><button data-panel="map">MAP <kbd>M</kbd></button>
+        </nav>
+        <div class="top-right">
+          <span class="online-dot"></span><span>STORY MODE</span
+          ><button
+            class="icon-button"
+            data-panel="settings"
+            title="Settings"
+            aria-label="Settings"
+          >
+            ⚙</button
+          ><button
+            class="icon-button pause"
+            data-panel="pause"
+            title="Pause"
+            aria-label="Pause game"
+          >
+            Ⅱ
+          </button>
+        </div>
+      </header>
+      <section class="location">
+        <span class="eyebrow"
+          ><span class="live-dot"></span> NOVA CITY, SAN AURELIO</span
+        >
+        <h1 id="district">OCEAN DRIVE</h1>
+        <p>
+          <span id="clock">17:42</span><span class="divider">/</span
+          ><span id="weather-label">☀ &nbsp; 24° CLEAR SKIES</span>
+        </p>
+      </section>
+      <aside class="mission-card">
+        <div class="mission-kicker">
+          <span class="small-icon">↗</span> OPPORTUNITY AWAITS
+          <span class="tiny">01</span>
+        </div>
+        <h2 id="mission-title">A city. A clean slate.</h2>
+        <p id="mission-desc">
+          Mara has a job for you. Head to the pier and make your first
+          connection.
+        </p>
+        <div class="mission-bottom">
+          <span class="reward" id="mission-reward"
+            >$2,400 <span>REWARD</span></span
+          ><button id="track" class="text-button">
+            TRACK MISSION <span>↗</span>
+          </button>
+        </div>
+        <div class="mission-progress"><i id="mission-progress"></i></div>
+      </aside>
+      <aside class="status">
+        <div class="wanted" id="wanted" aria-label="Wanted level zero">
+          ☆ ☆ ☆ ☆ ☆
+        </div>
+        <div class="balance"><span>$</span><span id="money">12,850</span></div>
+        <div class="balance-caption">AVAILABLE BALANCE</div>
+        <div class="save-status" id="save-status">
+          NOVA CITY IS YOURS TO EXPLORE
+        </div>
+      </aside>
+      <div class="cinema-label">
+        <span class="line"></span><span>YOUR CITY. YOUR RULES.</span>
+      </div>
+      <section class="minimap-area">
+        <div class="minimap-top">
+          <span
+            ><i class="lime-dot"></i
+            ><span id="map-district">OCEAN DRIVE</span></span
+          ><button data-panel="map" aria-label="Expand map">⤢</button>
+        </div>
+        <div class="minimap-frame">
+          <canvas
+            id="minimap"
+            width="300"
+            height="190"
+            aria-label="Local map"
+          ></canvas
+          ><span class="north">N</span><span class="map-zoom">+</span>
+        </div>
+        <div class="vitals">
+          <span class="vital-icon">✚</span
+          ><span class="health-track"><i id="health"></i></span
+          ><span class="armor-icon">⬡</span
+          ><span class="armor-track"><i id="armor"></i></span>
+        </div>
+        <div class="coords">
+          <span id="coordinates">34.0218° N · 118.4814° W</span
+          ><span>GPS ACTIVE</span>
+        </div>
+      </section>
+      <div class="interaction" id="interaction">
+        <kbd>E</kbd
+        ><span>GET IN & DRIVE<span>VANGUARD GT · SPORTS COUPE</span></span>
+      </div>
+      <section class="speedometer">
+        <div class="vehicle-name" id="vehicle-name">
+          VANGUARD GT <span>SPORT</span>
+        </div>
+        <div class="speed-main">
+          <span id="speed">000</span>
+          <div><span>KM/H</span><strong id="gear">N</strong></div>
+        </div>
+        <div class="speed-bars" id="speed-bars"></div>
+        <div class="fuel">
+          <span>◉</span><i><b id="fuel-level"></b></i
+          ><span id="vehicle-condition">100% CONDITION</span>
+        </div>
+      </section>
+      <footer class="controls">
+        <div>
+          <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd
+          ><span id="move-label">MOVE</span>
+        </div>
+        <div><kbd>SHIFT</kbd><span>SPRINT</span></div>
+        <div><kbd>SPACE</kbd><span id="space-label">JUMP</span></div>
+        <div><kbd>E</kbd><span>INTERACT</span></div>
+        <div><kbd>C</kbd><span>CAMERA</span></div>
+        <div><kbd>ESC</kbd><span>PAUSE</span></div>
+        <span class="version">NOVA CITY <b> / </b> FREE ROAM</span>
+      </footer>
+      <div id="toast" role="status"></div>
+      <div id="checkpoint-label"></div>
+      <div class="touch-controls">
+        <div id="joystick"><div id="stick"></div></div>
+        <div class="touch-actions">
+          <button data-key="ShiftLeft">RUN</button
+          ><button data-key="Space">JUMP / BRAKE</button
+          ><button id="touch-interact">ENTER / EXIT</button>
+        </div>
+      </div>
+      <div
+        id="modal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-box">
+          <div class="modal-header">
+            <span class="eyebrow">URBAN EMPIRE / NOVA CITY</span
+            ><button id="close-modal" aria-label="Close menu">×</button>
+          </div>
+          <h2 id="modal-title"></h2>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+      <div id="loading">
+        <div class="loading-brand">URBAN<span>EMPIRE</span></div>
+        <p>WELCOME TO NOVA CITY</p>
+        <div class="loading-line"><i></i></div>
+        <small id="load-message">Preparing your city…</small>
+      </div>
+    </main>
+  </body>
+</html>
